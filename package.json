@@ -1,0 +1,33 @@
+{
+  "bin": "startAPI.js",
+  "name": "fusion",
+  "version": "3.16.0",
+  "description": "DH Fusion for XML Loading and API",
+  "main": "Server/api.js",
+  "author": {
+    "name": "Diameter Health, Inc.",
+    "email": "jdamore@diameterhealth.com"
+  },
+  "scripts": {
+	"lint": "./node_modules/.bin/eslint . -c .eslintrc.js --ext .js"
+  }, 
+  "engines": {
+    "node": "^8.9.1"
+  },
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    "babel-eslint": "8.2.1",
+    "eslint": "^4.5.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-security": "^1.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jddamore/CCDA-fragment-validator"
+  },
+  "snyk": true
+}
