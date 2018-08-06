@@ -1,7 +1,7 @@
 const validator = require('cda-schematron');
 const cheerio = require('cheerio');
 const fs = require('fs');
-const validCCDA = fs.readFileSync('./validEmpty.xml');
+const validCCDA = fs.readFileSync('./validator/validEmpty.xml');
 const debug = true;
 
 module.exports = (xml, schematron) => {
@@ -19,7 +19,7 @@ module.exports = (xml, schematron) => {
   // bring it all back together in new XML document
   var newout = '<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="/infrastructure/cda/CDA_SDTC.xsd" xmlns:voc="urn:hl7-org:v3/voc" xmlns:sdtc="urn:hl7-org:sdtc">' + out + '<component><structuredBody>' + body + '<component>' + xml + '</component></structuredBody></component></ClinicalDocument>';  
   if (debug){
-    fs.writeFileSync('./yo1.xml', newout);
+    fs.writeFileSync('./yo.xml', newout);
   }
   return validator.validate(newout, schematron); 
 };
