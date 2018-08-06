@@ -5,6 +5,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Don't keep schematron and voc in GitHub
+*.sch
+*voc.xml*
+
 # Runtime data
 pids
 *.pid
@@ -35,6 +39,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+repos/
 
 # TypeScript v1 declaration files
 typings/

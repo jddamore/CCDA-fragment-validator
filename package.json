@@ -1,7 +1,7 @@
 {
   "bin": "startAPI.js",
   "name": "fusion",
-  "version": "3.16.0",
+  "version": "0.0.1",
   "description": "DH Fusion for XML Loading and API",
   "main": "Server/api.js",
   "author": {
@@ -9,13 +9,20 @@
     "email": "jdamore@diameterhealth.com"
   },
   "scripts": {
-	"lint": "./node_modules/.bin/eslint . -c .eslintrc.js --ext .js"
-  }, 
+    "lint": "./node_modules/.bin/eslint . -c .eslintrc.js --ext .js"
+  },
   "engines": {
     "node": "^8.9.1"
   },
   "dependencies": {
-
+    "body-parser": "^1.16.0",
+    "cda-schematron": "^1.0.0",
+    "chalk": "^2.4.1",
+    "cheerio": "1.0.0-rc.2",
+    "express": "^4.14.0",
+    "morgan": "^1.7.0",
+    "shelljs": "^0.8.2",
+    "winston": "^2.3.1"
   },
   "devDependencies": {
     "babel-eslint": "8.2.1",
