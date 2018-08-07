@@ -44,14 +44,20 @@
 <body>
   <div class="jumbotron">
     <h1 class="display-4">
-      <i></i>C-CDA 2.1 Fragment Validator</h1>
+      <i class="fas fa-paper-plane"></i>&nbsp;C-CDA 2.1 Fragment Validator</h1>
     <h3 class="lead">This is a simple website that provides for C-CDA fragment schematron validation</h3>
     <hr class="my-4">
     <p>Place XML in the text box below (shown in white). XML should begin with
       <code>&lt;section&gt;</code> tag. Sections must contain a
       <code>&lt;templateId&gt;</code> from C-CDA 2.1 to parse and validate appropriately </p>
     <div class="form-group">
-      <label class="col-sm-2 control-label">Insert XML to the right</label>
+      <label class="col-sm-2 control-label">
+        Insert XML to be validated
+        <div style="color:red">
+          <i class="fas fa-exclamation-triangle"></i>
+          No PHI allowed!
+        </div>
+      </label>
       <div class="col-sm-10">
         <textarea id="xml" class="form-control" rows="20" placeholder="&lt;section&gt;&#10;&nbsp;&nbsp;Your XML sample&#10;&lt;/section&gt;"></textarea>
       </div>
