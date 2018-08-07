@@ -23,7 +23,8 @@
     "morgan": "^1.7.0",
     "shelljs": "^0.8.2",
     "socket.io": "^2.1.1",
-    "winston": "^2.3.1"
+    "winston": "^2.3.1",
+    "xmlchecker": "^0.1.0"
   },
   "devDependencies": {
     "babel-eslint": "8.2.1",

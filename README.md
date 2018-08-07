@@ -6,21 +6,35 @@ Example hosted at http://www.ccdamap.com
 
 ## How it works
 
-Two types of documents are acceptable: 
-1) Complete C-CDA documents (must be C-CDA 2.1). THis must start with `<ClinicalDocument>`
-2) A fragtment of a C-CDA document. This must start with `<section>` 
+Go to base url (e.g. http://localhost/ or http://www.ccdamap.com or where you've hosted)
 
-Returns only errors (no warning or info) from C-CDA 2.1 schematron. Note that that schematron is available at HL7 Gforge at following link: https://gforge.hl7.org/gf/project/strucdoc/scmsvn/?action=browse&path=%2Ftrunk%2FC-CDAR2.1%2FSchematron%2FCDAR2_IG_CCDA_CLINNOTES_R1_DSTU2.1_2015AUG.sch&view=log
+Inside the text area, paste in XML content from a C-CDA starting with the `<code>` element 
 
-## Application install and start
+This will return errors and warnings. Note that that schematron is available at HL7 Gforge at following link: https://gforge.hl7.org/gf/project/strucdoc/scmsvn/?action=browse&path=%2Ftrunk%2FC-CDAR2.1%2FSchematron%2FCDAR2_IG_CCDA_CLINNOTES_R1_DSTU2.1_2015AUG.sch&view=log This scehamtron, however, needs some slight modification to work with the parser developed (under 10 rules of 9,000+)
 
-Requires Node to be installed
+## Application setup 
 
+Download this repository
+
+Install associated packages
 `npm install`
+(note that if you have trouble installing packages on Windows, try `npm windows-build-tools -g` and re-attempt)
+
+Create a directory in the main folder called repos
+`mkdir repos`
+
+Clone the HL7 or other public repository into this folder
+`git clone https://github.com/HL7/C-CDA-Examples/`
+
+Copy in the two following files
+- C-CDA 2.1 schematron (available at GForge, some modifications necessary) into validator directory
+- Vocabulary reference file (voc.xml) into validator directory
+
+Start application
 `node app`
 
 ## Interface
 
-Webpage display a text box for fragments to be inserts. Results displayed to screen. 
+Main (/): Webpage display a text box for fragments to be inserts. Results displayed to screen. 
 
-Also includes a button that will scrub all section to be validated from: https://github.com/HL7/C-CDA-Examples/
+Path (/validateAll): Webpage that updates Git repository and then reruns all schematron tests across files 
