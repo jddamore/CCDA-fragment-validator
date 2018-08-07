@@ -17,20 +17,25 @@ This will return errors and warnings. Note that that schematron is available at 
 Download this repository
 
 Install associated packages
+
 `npm install`
+
 (note that if you have trouble installing packages on Windows, try `npm windows-build-tools -g` and re-attempt)
 
 Create a directory in the main folder called repos
+
 `mkdir repos`
 
 Clone the HL7 or other public repository into this folder
+
 `git clone https://github.com/HL7/C-CDA-Examples/`
 
 Copy in the two following files
-- C-CDA 2.1 schematron (available at GForge, some modifications necessary) into validator directory
-- Vocabulary reference file (voc.xml) into validator directory
+- C-CDA 2.1 schematron (available at GForge, some modifications necessary) into main directory. Provide filename in config
+- Vocabulary reference file into main directory. Since this must be referenced, keep voc.xml filename
 
 Start application
+
 `node app`
 
 ## Interface
