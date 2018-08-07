@@ -32,7 +32,9 @@ This will return errors and warnings. Note that that schematron is available at 
 4. Clone the HL7 or other public repository into this new folder
 
 `cd repos`
+
 `git clone https://github.com/HL7/C-CDA-Examples/`
+
 `cd ..`
 
 5. Copy in the two following files into main folder 
@@ -43,10 +45,10 @@ This will return errors and warnings. Note that that schematron is available at 
 
 `node app`
 
-Steps 1-5 are unncessary on future application starts. 
+Steps 1-5 are unncessary on future application restarts. 
 
-## Interface
+## Web application URLs
 
 Main (/): Webpage display a text box for fragments to be inserts. Results displayed to screen. 
 
-Path (/validateAll): Webpage that updates Git repository and then reruns all schematron tests across files 
+Check all repo samples (/validateAll): Webpage that updates Git repository and then reruns all schematron tests across files 
