@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const textParser = bodyParser.text({ type: '*/*', limit: '50Mb' });
 const chalk = require('chalk');
 const shell = require('shelljs');
-const validator = require('./validator/validator');
+const validator = require('./validator/schematron-validator');
 const index = fs.readFileSync('./html/index.html', 'utf-8');
 const validateAll = fs.readFileSync('./html/validateAll.html', 'utf-8');
 var io; 
@@ -59,15 +59,21 @@ module.exports = (config, schematron) => {
   const app = express();
   app.get('/', (req, res) => res.send(index));
   app.post('/validate', textParser, (req, res) => {
-    var xml = req.body.toString();
+    let xml = req.body.toString();
     // console.log(xml);
-    var results = validator(xml, schematron);
+    let full = validator(xml, schematron);
+    let results = full.schematron;
     // console.log(results);
+    if (full.schema && !full.schema.pass) {
+      for (let h = 0; h < full.schema.errors.length; h++) {
+        full.schema.errors[h].line -= 703; 
+      }
+    }
     if (!results.description){
       for (var i = 0; i < results.errors.length; i++){
         delete results.errors[i].xml;
         if (results.errors[i].hasOwnProperty('line')) {
-          results.errors[i].line -= 709; 
+          results.errors[i].line -= 698; 
         }
       }  
     }
@@ -75,7 +81,7 @@ module.exports = (config, schematron) => {
     if (results.warnings) {
       for (var j = 0; j < results.warnings.length; j++){
         delete results.warnings[j].xml;
-        results.warnings[j].line -= 709;
+        results.warnings[j].line -= 698;
         // Only keep warnings not from example CCDA
         if (results.warnings[j].line > 0){
           warnings.push(results.warnings[j]);
@@ -84,7 +90,12 @@ module.exports = (config, schematron) => {
     }
     results.warnings = warnings;
     results.warningCount = warnings.length;
-    res.send(results);
+    let response = {
+      schema: full.schema,
+      schematron: results
+    };
+    // console.log(JSON.stringify(response));
+    res.send(response);
   });
   app.get('/validateAll', (req, res) => {
     res.send(validateAll);
@@ -116,7 +127,7 @@ module.exports = (config, schematron) => {
               // console.log('SKIPPED: ' + files[k]+'\r\n');
             }
             else {
-              if (results.errorCount === 0){
+              if (results.schema && results.schematron && results.schema.pass && results.schematron.errorCount === 0){
                 io.emit('update', 'OK!: ' + files[k]+'\r\n', { for: 'everyone' });
                 // console.log('OK!: ' + files[k]+'\r\n');
               }

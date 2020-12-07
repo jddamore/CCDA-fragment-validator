@@ -3,6 +3,7 @@ const validator = require('cda-schematron');
 const cheerio = require('cheerio');
 const fs = require('fs');
 const validCCDA = fs.readFileSync('./validator/validEmpty.xml');
+const schema = require('./schema-validator');
 const debug = true;
 
 module.exports = (xml, schematron) => {
@@ -30,11 +31,20 @@ module.exports = (xml, schematron) => {
     }
     catch (error) {
       return {
-        description: 'validator did not run, xml is invalid',
-        errorCount: 1, 
-        errors: [
-          error
-        ]
+        schema: {
+          pass: false,
+          description: 'validator did not run, xml is invalid',
+          errors: [
+            error
+          ]          
+        },
+        schematron: {
+          description: 'validator did not run, xml is invalid',
+          errorCount: 1, 
+          errors: [
+            error
+          ]
+        }
       };
     }
     // Parse and grab original section tempalte
@@ -62,6 +72,11 @@ module.exports = (xml, schematron) => {
     if (debug){
       fs.writeFileSync('./yo.xml', newout);
     }
-    return validator.validate(newout, schematron); 
+    let result = {
+      schema: schema(newout),
+      schematron: validator.validate(newout, schematron)
+    };
+
+    return result; 
   }
 };

@@ -6,7 +6,7 @@ const chalk = require('chalk');
 const config = require('./config');
 
 // Application code
-const validator = require('./validator/validator');
+const validator = require('./validator/schematron-validator');
 const server = require('./server');
 const example = fs.readFileSync('./test/example.xml', 'utf-8');
 
@@ -48,8 +48,12 @@ if (!fs.existsSync(basePath)){
 const checkStatus = () => {
   console.log('checking that validation passes on example file');
   var results = validator(example, schematronFile);
-  if (!results || results.errorCount !== 0){
-    console.log(chalk.red('ERROR:') + ' the sample validation did not pass. Check environment.');
+  if (!results || !results.schema || !results.schema.pass) {
+    console.log(chalk.red('ERROR:') + ' the sample schema validation did not pass. Check environment.');
+    return '';
+  }
+  else if (!results || !results.schematron || results.schematron.errorCount !== 0){
+    console.log(chalk.red('ERROR:') + ' the sample schematron validation did not pass. Check environment.');
     return '';
   }
   else {

@@ -11,8 +11,16 @@ Go to base url (e.g. http://localhost/ or where you've hosted)
 
 Inside the text area, paste in XML content from a C-CDA starting with the `<section>` element 
 
-This will return errors and warnings. Note that that schematron is available at HL7 Gforge at following link: https://gforge.hl7.org/gf/project/strucdoc/scmsvn/?action=browse&path=%2Ftrunk%2FC-CDAR2.1%2FSchematron%2FCDAR2_IG_CCDA_CLINNOTES_R1_DSTU2.1_2015AUG.sch&view=log This scehamtron, however, needs some slight modification to work with the parser developed (under 10 rules of 9,000+)
+This validator will return both schema and schematron errors for C-CDA documents. 
 
+The schematron is based on files here: 
+- https://github.com/HL7/cda-ccda-2.1/blob/master/schematron/CDAR2_IG_CCDA_CLINNOTES_R1_DSTU2.1_2015AUG_Vol2_2019JUNwith_errata.sch
+- https://github.com/HL7/cda-ccda-2.1/blob/master/schematron/voc.xml
+(Note This schematron, however, needs some slight modification to work with the parser developed (under 10 rules of 9,000+))
+
+The schema is based on on files in this repo: https://github.com/HL7/cda-core-2.0/ (copied December 2020)
+
+This will return schema errors, schematron errors and schematron warnings.  
 ## Application setup
 
 1. Download this repository
@@ -37,11 +45,7 @@ This will return errors and warnings. Note that that schematron is available at 
 
 `cd ..`
 
-5. Copy in the two following files into main folder 
-- C-CDA 2.1 schematron (available at GForge, some modifications necessary). Provide filename in config
-- Vocabulary reference file into main directory. Since this must be referenced, keep voc.xml as filename
-
-6. Start application
+5. Start application
 
 `node app`
 

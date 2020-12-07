@@ -22,13 +22,20 @@
         var data=$('#xml').val();
         const success=(response) => {
           // alert(JSON.stringify(response));
-          if(response.errorCount===0) {
+          if(response.schematron.errorCount===0) {
             $('#ok').show();
           }
           else {
             $('#bad').show();
           }
-          $('#response').html(JSON.stringify(response,null,4));
+          if (response.schema.pass) {
+            $('#schemaok').show();
+          }
+          else {
+            $('#schemabad').show();
+          }
+          $('#schemaresponse').html(JSON.stringify(response.schema,null,4));
+          $('#response').html(JSON.stringify(response.schematron,null,4));
         }
         $.ajax({
           type: "POST",
@@ -45,7 +52,7 @@
   <div class="jumbotron">
     <h1 class="display-4">
       <i class="fas fa-paper-plane"></i>&nbsp;C-CDA 2.1 Fragment Validator</h1>
-    <h3 class="lead">This is a simple website that provides for C-CDA fragment schematron validation</h3>
+    <h3 class="lead">This is a simple website that provides for C-CDA fragment schema and schematron validation</h3>
     <hr class="my-4">
     <p>Place XML in the text box below (shown in white). XML should begin with
       <code>&lt;section&gt;</code> tag. Sections must contain a
@@ -67,7 +74,22 @@
     <p>&nbsp;</p>
     <div class="form-group">
       <label id="errors" class="col-sm-2 control-label">
-        C-CDA Validation Results
+        CDA Schema Validation Results
+        <div id="schemaok" class="alert alert-success" role="alert">
+          Great, no errors!
+        </div>
+        <div id="schemabad" class="alert alert-danger" role="alert">
+          Errors shown on right!
+        </div>
+      </label>
+      <div class="col-sm-10">
+        <pre id="schemaresponse" style="min-height: 10em"></pre>
+      </div>
+    </div>
+    <p>&nbsp;</p>
+    <div class="form-group">
+      <label id="errors" class="col-sm-2 control-label">
+        C-CDA Schematron Validation Results
         <div id="ok" class="alert alert-success" role="alert">
           Great, no errors!
         </div>
