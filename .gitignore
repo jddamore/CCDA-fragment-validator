@@ -6,10 +6,6 @@ yarn-debug.log*
 yarn-error.log*
 yo.xml
 
-# Don't keep schematron and voc in GitHub
-*.sch
-*voc.xml*
-
 # Runtime data
 pids
 *.pid
