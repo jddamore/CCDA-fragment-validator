@@ -1,7 +1,7 @@
 # CCDA-fragment-validator
 Application with website that provides for validation of schematron sections of CCDA documents. 
 
-Example website hosted at http://www.ccdamap.com 
+Example website hosted by [More Informatics](https://moreinformatics.com/) at http://www.ccda.io
 
 (**Note that this site is only used for testing fictional documents, not appropriate for PHI**)
 
@@ -49,7 +49,7 @@ This will return schema errors, schematron errors and schematron warnings.
 
 `node app`
 
-Steps 1-5 are unncessary on future application restarts. 
+Steps 1-4 are unncessary on future application restarts. 
 
 ## Web application URLs
 
