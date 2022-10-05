@@ -18,7 +18,7 @@
     "body-parser": "^1.16.0",
     "cda-schematron": "^1.0.0",
     "chalk": "^2.4.1",
-    "cheerio": "1.0.0-rc.2",
+    "cheerio": "1.0.0-rc.12",
     "express": "^4.14.0",
     "libxmljs2": "^0.26.5",
     "morgan": "^1.10.0",
