@@ -22,7 +22,7 @@
     "express": "^4.14.0",
     "libxmljs2": "^0.26.5",
     "morgan": "^1.10.0",
-    "shelljs": "^0.8.2",
+    "shelljs": "^0.8.5",
     "socket.io": "^2.4.0",
     "winston": "^2.3.1",
     "xmlchecker": "^0.1.0"
