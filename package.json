@@ -11,9 +11,6 @@
   "scripts": {
     "lint": "./node_modules/.bin/eslint . -c .eslintrc.js --ext .js"
   },
-  "engines": {
-    "node": "^8.9.1"
-  },
   "dependencies": {
     "body-parser": "^1.16.0",
     "cda-schematron": "^1.0.0",
