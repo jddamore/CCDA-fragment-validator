@@ -17,6 +17,9 @@
   <script type="text/javascript">
     $(function() {
       $('.alert').hide();
+      $('#clear').click(function () {
+        $('#xml').val('');
+      });
       $('#validate').click(function() {
         $('.alert').hide();
         var data=$('#xml').val();
@@ -71,6 +74,7 @@
     </div>
     <p>&nbsp;</p>
     <a id="validate" class="btn btn-primary btn-lg" href="#" role="button">Validate</a>
+    <a id="clear" class="btn btn-danger btn-lg" href="#" role="button">Clear</a>
     <p>&nbsp;</p>
     <div class="form-group">
       <label id="errors" class="col-sm-2 control-label">
