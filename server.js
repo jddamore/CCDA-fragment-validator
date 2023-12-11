@@ -63,6 +63,7 @@ module.exports = (config, schematron) => {
     // console.log(xml);
     let full = validator(xml, schematron);
     let results = full.schematron;
+    if (!results) results = [{description: 'UNKNOWN SCHEMATRON ERROR'}]
     // console.log(results);
     if (full.schema && !full.schema.pass) {
       for (let h = 0; h < full.schema.errors.length; h++) {
